@@ -74,8 +74,8 @@ TXM getTXM(bool valid) {
 
 //TODO Genesis
 Bloc getCoinBase(bool valid) {
-	TX firstTX;
-	TXM firstTXM;
+	TX firstTX; // vide
+	TXM firstTXM; // positif
 	//TODO TXs
 	Bloc coinbase = Bloc(0, &firstTX, &firstTXM);
 	coinbase.num = 0;

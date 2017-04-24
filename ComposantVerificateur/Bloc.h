@@ -27,7 +27,7 @@ class UTXO
 {
 public:
 	float montant;
-	char dest[KEY_SIZE];  //compte destinataire
+	char dest[KEY_SIZE];  //compte destinataire = clé publique
 
 	char hash[HASH_SIZE];    // hash(nBloc,nTx,nUTXO,montant,destinataire) pour securisation de l'UTXO
 
