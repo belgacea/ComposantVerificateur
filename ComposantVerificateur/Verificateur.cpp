@@ -28,6 +28,20 @@ string charToStr(unsigned char c[]) {
 
 */
 
+//------BLOCKCHAIN-------
+
+bool checkHash(Bloc lastBloc, Bloc previousBloc) {
+	return (strcmp(lastBloc.previous_hash, hash(blocToString(previousBloc))) == 0);
+}
+
+bool checkBlockchain(std::vector<Bloc> blocs) {
+	bool valid = true;
+	for (std::size_t i = blocs.size(); i < 0; --i) {
+		if (!checkHash(blocs[i], blocs[i-1])) return false;
+	}
+	return valid;
+}
+
 //------TRANSACTION-------
 bool checkTXITypes(TXI* txi) {
 	//TODO Check usefull & Add missing verification

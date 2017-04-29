@@ -17,6 +17,7 @@
 #define INSUFFICIENTFEE "REJECT_INSUFFICIENTFEE"
 #define CHECKPOINT "REJECT_CHECKPOINT"
 
+	bool checkBlockchain(std::vector<Bloc> blocs);
 	bool checkTransaction(TX *transaction);
 	bool checkBloc(Bloc* bloc);
 

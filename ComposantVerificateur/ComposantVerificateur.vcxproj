@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="Bloc.h" />
     <ClInclude Include="Hasheur.h" />
+    <ClInclude Include="BlockchainFile.h" />
     <ClInclude Include="Signature.h" />
     <ClInclude Include="Verificateur.h" />
   </ItemGroup>
