@@ -18,7 +18,7 @@ bool checkBlockchain(vector<Bloc> blocs) {
 //------TRANSACTION-------
 bool checkSignature(TXI* txi){
 	Bloc* origin = findBlock(txi->nBloc);
-	return verify(origin->TX.utxo[txi->nUTXO].hash, txi->signature, origin->TX.utxo[txi->nUTXO].dest);
+	return verify(origin->tx1.utxo[txi->nUTXO].hash, txi->signature, origin->tx1.utxo[txi->nUTXO].dest);
 }
 
 bool checkTransaction(TX* tx){
