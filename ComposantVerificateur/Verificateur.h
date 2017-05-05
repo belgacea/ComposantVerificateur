@@ -6,6 +6,7 @@
 #include <vector>
 #include "Hasheur.h"
 #include "Signature.h"
+#include "BlockchainFile.h"
 //#include "File.h"
 #include "Bloc.h"
 
