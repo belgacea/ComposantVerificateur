@@ -23,9 +23,4 @@
 	bool checkTransaction(TX *transaction);
 	bool checkBloc(Bloc* bloc);
 
-	//-----UTILS-------
-
-	char* strToChar(string str);
-	string charToStr(char* c);
-
 #endif
