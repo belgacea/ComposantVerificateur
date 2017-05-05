@@ -3,6 +3,7 @@
 #define Verificateur_h
 
 #include <string>
+#include <vector>
 #include "Hasheur.h"
 #include "Signature.h"
 //#include "File.h"
