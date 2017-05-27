@@ -113,13 +113,21 @@
     <ClInclude Include="Bloc.h" />
     <ClInclude Include="Hasheur.h" />
     <ClInclude Include="BlockchainFile.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Json.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Signature.h" />
     <ClInclude Include="Verificateur.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloc.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Verificateur.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ComposantVerificateur.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
