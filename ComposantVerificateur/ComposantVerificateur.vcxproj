@@ -122,12 +122,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloc.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Verificateur.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ComposantVerificateur.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="main.cpp.old" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

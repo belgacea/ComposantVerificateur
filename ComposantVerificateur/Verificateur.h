@@ -15,9 +15,17 @@
 #include "BlockchainFile.h"
 #include "Bloc.h"
 
-Verificateur_API bool checkSignature(TXI* txi);
-Verificateur_API bool checkTransaction(TX *transaction);
-Verificateur_API bool checkHash(Bloc lastBloc, Bloc previousBloc);
-Verificateur_API bool checkBlockchain(std::vector<Bloc> blocs);
+class Verificateur_API Verificateur {
+private:
+	CBlockchainFile _file_reader;
+	bool checkSignature(TXI* txi);
+	bool checkTransaction(TX *transaction);
+	bool checkHash(Bloc lastBloc, Bloc previousBloc);
+public:
+	Verificateur::Verificateur(CBlockchainFile file_reader);
+	Verificateur::~Verificateur();
+	bool checkBlockchain(std::vector<Bloc> blocs);
+};
+
 
 #endif
