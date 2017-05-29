@@ -17,7 +17,9 @@
 
 class Verificateur_API Verificateur {
 private:
-	CBlockchainFile _file_reader;
+	CBlockchainFile* _file_reader;
+	Hash::Hash* _hasheur;
+	Signature* _signature;
 	bool checkSignature(TXI* txi);
 	bool checkTransaction(TX *transaction);
 	bool checkHash(Bloc lastBloc, Bloc previousBloc);

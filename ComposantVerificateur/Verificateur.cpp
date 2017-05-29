@@ -1,8 +1,9 @@
 #include "Verificateur.h"
 //#include <sstream>!
 
-Verificateur::Verificateur(CBlockchainFile file_reader) : CBlockchainFile(file_reader) {
-	_file_reader = file_reader;
+Verificateur::Verificateur(CBlockchainFile file_reader) : _file_reader(&file_reader) {
+	_hasheur = new Hash::Hash();
+	_signature = new Signature();
 }
 
 Verificateur::~Verificateur() {};
@@ -10,8 +11,8 @@ Verificateur::~Verificateur() {};
 //------TRANSACTION-------
 
 bool Verificateur::checkSignature(TXI* txi) {
-	Bloc origin = _file_reader.read(txi->nBloc);
-	return verify(origin.tx1.utxo[txi->nUtxo].hash, txi->signature, origin.tx1.utxo[txi->nUtxo].dest);
+	Bloc origin = _file_reader->read(txi->nBloc);
+	return _signature->verify(origin.tx1.utxo[txi->nUtxo].hash, txi->signature, origin.tx1.utxo[txi->nUtxo].dest);
 }
 
 bool Verificateur::checkTransaction(TX* tx) {
@@ -26,7 +27,7 @@ bool Verificateur::checkTransaction(TX* tx) {
 //------BLOCKCHAIN-------
 
 bool Verificateur::checkHash(Bloc lastBloc, Bloc previousBloc) {
-	return (strcmp(lastBloc.previous_hash, ::hash(blocToString(previousBloc)).c_str()) == 0);
+	return (strcmp(lastBloc.previous_hash, _hasheur->hash(_hasheur->blocToString(previousBloc)).c_str()) == 0);
 }
 
 bool Verificateur::checkBlockchain(vector<Bloc> blocs) {

@@ -1,30 +1,47 @@
-#pragma once
-#ifndef Signature_h
-#define Signature_h
+//
+// Created by DIALLO on 13/04/2017.
+//
 
-#include <string>
-
-/**
-* Génere la paire de clé (clé privée, clé publique) et renvoi faux en cas d'echec, vrai sinon
-*/
-bool generate(std::string** privateKey, std::string** publickey);
-
-
-/**
-* Génere la signature relative à une transaction et une clé privé afin depouvoir authentifier la transacrtion effectué par
-* le detenteur de la clé privé.
-* data représente un array d'octets à signer et privKey la clée privée.
-*/
-std::string sign(std::string data, std::string privKey);
-
-
-/**
-* Permet de vérifier la véracité de la signature.
-* Grace à la clé publique, on pourra s'assurer que la transaction effectué est bien valide et à été émise par telle
-* personne.
-* data représente l'array d'octets associés à la signature et pubKey la clée publique du signataire.
-*/
-bool verify(std::string data, std::string signature, std::string pubKey);
-
-
+#ifdef SIGNATURE_EXPORTS
+#define SIGNATURE_INTERFACE __declspec(dllexport)
+#else
+#define SIGNATURE_INTERFACE __declspec(dllimport)
 #endif
+
+
+#include <vector>
+#include <stdlib.h>
+#include <time.h>
+#include "Utiles.h"
+
+const unsigned maxBits = 32;
+const unsigned modulo = 256;
+
+using namespace std;
+
+SIGNATURE_INTERFACE class Signature {
+protected:
+	Utiles convertisseur;
+
+public:
+	Signature() {
+		srand(time(NULL));
+	}
+
+
+	SIGNATURE_INTERFACE bool generate(string& privateKey, string& publickey);
+	SIGNATURE_INTERFACE string sign(string data, string privKey);
+	SIGNATURE_INTERFACE bool verify(string data, string signature, string pubKey);
+
+private:
+	string generatePrivKey();
+	string generatePublicKeyFromPrivKey(string privKey);
+	int sommeHex(string, string);
+	string transformeTexteToAsciiHex(string, char const *);
+	string transformeHexToAsciiTexte(string);
+	string EncriptPartFile(string, string);
+	unsigned int split(const string &texte,
+		vector<string> &resultat,
+		char _separateur);
+};
+
